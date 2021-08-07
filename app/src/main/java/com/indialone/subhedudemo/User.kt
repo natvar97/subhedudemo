@@ -1,6 +1,6 @@
 package com.indialone.subhedudemo
 
 data class User(
-    var usename: String = "",
+    var username: String = "",
     var password: String = ""
 )

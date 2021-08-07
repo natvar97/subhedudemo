@@ -13,6 +13,10 @@ class UserViewModel(
 
     private val apiResponse = MutableLiveData<ApiResponse>()
 
+    init {
+        postUserDetails(User())
+    }
+
     fun postUserDetails(user: User) {
         viewModelScope.launch {
             try {

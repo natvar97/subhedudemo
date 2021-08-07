@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.indialone.subhedudemo.databinding.ActivityMainBinding
@@ -26,11 +27,24 @@ class MainActivity : AppCompatActivity() {
         mBinding.btnSingIn.setOnClickListener {
             if (validateDetails()) {
                 val user = User(email, password)
+                Log.e("user", "$user")
                 mUserViewModel.postUserDetails(user)
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
+                mUserViewModel.getUserDetails().observe(this) { response ->
+                    Log.d("response", "$response")
+                    if (response.status == "OK") {
+                        Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, HomeActivity::class.java))
+                        finish()
+                        return@observe
+                    }
+                }
             }
         }
+
+        /*
+        usename: modsubhendu
+        password: 9178469046
+         */
 
     }
 

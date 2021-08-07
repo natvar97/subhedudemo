@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/black"
-        android:text="Sing In"
+        android:text="Sign In"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp" />
